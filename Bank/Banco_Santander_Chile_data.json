@@ -1,0 +1,138 @@
+{
+  "company": {
+    "name": "Banco Santander Chile",
+    "founded": "October 23, 1978 (Santiago, Chile); current entity formed via 2002-2003 merger with Banco Santiago",
+    "headquarters": "Santiago, Chile (Bandera 140; relocating to Las Condes)",
+    "ceo": "Román Blanco, General Manager & Country Head (since July 2022)",
+    "parent": "Banco Santander, S.A. (Spain) - Grupo Santander",
+    "listing": "NYSE: BSAC (ADR, ratio 400 common shares : 1 ADR); Santiago Exchange: BSANTANDER",
+    "employees_2025": 8526,
+    "employees_2021": 9988,
+    "employees_change_pct": -14.6,
+    "branches_approx": 504,
+    "customers_total_2025_mn": 4.6,
+    "customers_total_1q26_mn": 4.8,
+    "customers_active_1q26_mn": 2.7,
+    "digital_customers_mn": 2.3
+  },
+  "ownership": {
+    "banco_santander_sa_spain_pct": 67.2,
+    "institutional_investors_pct": 31.7,
+    "free_float_other_pct": 1.17,
+    "note": "Top 25 shareholders control 95.4% of the company"
+  },
+  "market_cap": {
+    "value_usd_bn": 15.7,
+    "as_of": "mid-2026",
+    "share_price_usd_adr": 32.88,
+    "pe_ttm": 13.6,
+    "dividend_yield_pct": 4.54,
+    "beta_5y_monthly": 0.25,
+    "week52_low": 22.77,
+    "week52_high": 37.72
+  },
+  "financials_annual": {
+    "note": "Net income in USD millions (approx, converted); Total assets in USD billions (approx, converted, year-end)",
+    "years": [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    "net_income_usd_mn": [634, 619, 844, 953, 867, 712, 1095, 872, 695, 938, 1173],
+    "total_assets_usd_bn": [48.9, 48.1, 53.7, 62.6, 70.8, 72.4, 83.0, 75.3, 85.3, 75.2, 75.6]
+  },
+  "fy2025_results": {
+    "net_income_clp_bn": 1053,
+    "net_income_yoy_pct": 22.8,
+    "roae_pct": 23.5,
+    "roae_2024_pct": 20.2,
+    "nim_pct": 4.0,
+    "nim_2024_pct": 3.6,
+    "net_interest_income_yoy_pct": 10.9,
+    "net_commissions_yoy_pct": 8.9,
+    "operating_income_yoy_pct": 10.2,
+    "opex_yoy_pct": 1.8,
+    "efficiency_ratio_pct": 36.0,
+    "efficiency_ratio_2024_pct": 39.0,
+    "commission_recurrence_pct": 63.7,
+    "fee_share_of_revenue_pct": 21,
+    "fee_share_of_revenue_prior_pct": 15,
+    "cet1_ratio_pct": 11.0,
+    "bis_ratio_pct": 16.9,
+    "total_assets_usd_bn": 75.6,
+    "gross_loans_usd_bn": 45.4,
+    "total_deposits_usd_bn": 33.9,
+    "dividend_payout_pct": 60
+  },
+  "q1_2026_results": {
+    "net_income_clp_bn": 273,
+    "net_income_usd_mn": 272,
+    "eps_usd": 1.45,
+    "roae_pct": 23.0,
+    "net_income_qoq_pct": 7.0,
+    "net_income_yoy_pct": -1.7,
+    "nim_pct": 3.8,
+    "nim_1q25_pct": 4.1,
+    "efficiency_ratio_pct": 32.5,
+    "efficiency_ratio_1q25_pct": 35.0,
+    "net_interest_income_yoy_pct": 7.9,
+    "net_fees_yoy_pct": 4.5,
+    "cet1_ratio_pct": 10.9,
+    "bis_ratio_pct": 16.4,
+    "consumer_loan_growth_yoy_pct": 4.2,
+    "credit_card_growth_yoy_pct": 5.1,
+    "dividend_per_share_clp": 3.35,
+    "dividend_yield_pct": 4.5,
+    "uf_variation_1q26_pct": 0.3,
+    "uf_variation_1q25_pct": 1.2
+  },
+  "guidance_2026": {
+    "roe_target_low": 22,
+    "roe_target_high": 24,
+    "loan_growth_low": 5,
+    "loan_growth_high": 6,
+    "cost_of_risk_target_pct": 1.3,
+    "efficiency_ratio_target": "mid-30s",
+    "dividend_payout_low": 60,
+    "dividend_payout_high": 70,
+    "nim_target_pct": 4.0,
+    "macro_assumptions": {
+      "gdp_growth_low": 2.1,
+      "gdp_growth_high": 2.4,
+      "inflation_target": "marginally below 3%",
+      "mpr_neutral_pct": 4.25,
+      "usd_clp_depreciation_cap_pct": 2.9
+    }
+  },
+  "segments": {
+    "commercial_banking_pct_of_loans": 70.4,
+    "divisions": ["Commercial Banking (Retail: individuals & SMEs)", "Wealth Management & Insurance", "Middle-Market / Business & Institutional Banking", "Corporate & Investment Banking (Global Banking & Markets)", "Enterprise Products / Payments (Getnet, Superdigital)"],
+    "subsidiaries": ["Santander Asset Management", "Santander Corredora de Bolsa (securities brokerage)", "Santander Corredores de Seguros (insurance brokerage)", "Getnet (payments/acquiring)", "Superdigital (digital wallet)"]
+  },
+  "market_share_2025_pct": {
+    "total_assets": {"Santander": 16.8, "Banco de Chile": 16.1, "BancoEstado": 15.7, "BCI": 14.1},
+    "mortgage_loans": {"BancoEstado": 20.0, "Santander": 19.5, "Scotiabank": 16.3, "Banco de Chile": 15.6},
+    "commercial_loans": {"Banco de Chile": 15.9, "BCI": 15.8, "BancoEstado": 14.4, "Santander": 14.2},
+    "consumer_loans": {"Santander": 19.1, "Banco de Chile": 18.1, "Scotiabank": 14.9, "Banco Falabella": 13.0}
+  },
+  "peer_net_income_2025_usd_bn": {
+    "Banco de Chile": {"value": 1.308, "yoy_pct": -1.2},
+    "Santander Chile": {"value": 1.173, "yoy_pct": 23.7},
+    "BCI": {"value": 1.09, "yoy_pct": 24.2}
+  },
+  "chile_banking_system": {
+    "total_assets_usd_bn": 454.8,
+    "num_institutions": 16,
+    "top5_concentration_pct": 75.1,
+    "systemic_banks": ["Santander", "BCI", "Banco de Chile", "BancoEstado", "Scotiabank", "Itaú"],
+    "santander_sib_surcharge_pct": 1.75,
+    "sib_surcharge_tiers": {"level_1_pct": 1.0, "level_2_pct": 1.5, "level_3_pct": 1.75}
+  },
+  "macro_chile": {
+    "policy_rate_pct": 4.5,
+    "policy_rate_as_of": "July 2026",
+    "inflation_yoy_pct": 3.9,
+    "inflation_as_of": "June 2026",
+    "inflation_target_pct": 3.0,
+    "gdp_growth_2025_pct": 2.3,
+    "unemployment_2025_pct": 8.0,
+    "new_admin_takeoffice": "March 2026 (José Antonio Kast, right-wing coalition, elected Dec 2025)",
+    "policy_agenda": "Corporate tax cut proposal 27%->23%, infrastructure investment, regulatory simplification, Fintech/Open Finance Law advancing"
+  }
+}
