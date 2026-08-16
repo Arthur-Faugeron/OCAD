@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>One Company A Day</title>
-<meta name="description" content="A private, dated compendium of institutional-grade equity research, one company at a time, across twenty-six sectors of coverage.">
+<title>Archive &middot; One Company A Day</title>
+<meta name="description" content="The full, searchable coverage index of One Company A Day equity research, organized by sector.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23172A3A'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='38' fill='%23F5F1E8' text-anchor='middle'%3EO%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,32 +14,29 @@
 <body>
 <div class="page">
 
-  <header class="masthead">
-    <p class="masthead-eyebrow">A Private Research Compendium</p>
-    <h1 class="masthead-title">One Company A Day</h1>
-    <p class="masthead-tagline">One institutional-grade equity report, published daily, across twenty-six sectors of coverage.</p>
+  <nav class="utility-nav">
+    <a href="index.html">One Company A Day</a>
+    <a href="archive.html">Archive &amp; Search</a>
+  </nav>
+
+  <header class="masthead masthead--compact">
+    <p class="masthead-eyebrow">Coverage Index</p>
+    <h1 class="masthead-title masthead-title--compact">The Archive</h1>
+    <p class="masthead-tagline">Every report on file, organized by sector. Search by company, ticker, or series.</p>
   </header>
 
   <div class="rule-double" role="presentation"></div>
 
-  <div class="masthead-meta">
-    <span>Last Updated: {{LAST_UPDATED}}</span>
-    <span class="meta-sep">&middot;</span>
-    <span>{{TOTAL_REPORTS_LABEL}}</span>
-    <span class="meta-sep">&middot;</span>
-    <span>{{SERIES_ACTIVE_LABEL}}</span>
-  </div>
-
-  <section class="latest">
-    <p class="section-label">Latest Report</p>
-{{LATEST_REPORT_BLOCK}}
+  <section class="search">
+    <label class="search-label" for="archive-search">Search</label>
+    <input type="search" id="archive-search" class="search-input" placeholder="Search by company, ticker, or series&hellip;" disabled autocomplete="off">
   </section>
 
-  <hr class="rule-light">
-
   <section class="contents">
-    <p class="section-label">Coverage Index</p>
-{{COVERAGE_INDEX}}
+    <p id="archive-empty" class="archive-empty" hidden>No reports match your search.</p>
+    <div class="category" id="archive-groups">
+      <p class="loading-note">Loading coverage index&hellip;</p>
+    </div>
   </section>
 
   <hr class="rule-light">
@@ -50,5 +47,6 @@
   </footer>
 
 </div>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
