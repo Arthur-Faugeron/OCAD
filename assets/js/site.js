@@ -13,6 +13,10 @@
     return `${n} ${n === 1 ? singular : plural}`;
   }
 
+  function downloadName(r) {
+    return `${r.label} - ${r.dateLabel}.pdf`.replace(/\s+/g, " ");
+  }
+
   function loadManifest() {
     return fetch("reports.json", { cache: "no-store" }).then((res) => {
       if (!res.ok) throw new Error(`reports.json: HTTP ${res.status}`);
@@ -28,8 +32,12 @@
     return [
       '<div class="latest-card">',
       `<p class="latest-series">${escapeHtml(r.series)}</p>`,
-      `<h2 class="latest-title"><a href="${r.href}">${escapeHtml(r.label)}</a></h2>`,
-      `<p class="latest-date">${escapeHtml(r.dateLabel)}</p>`,
+      `<h2 class="latest-title"><a href="${r.href}" target="_blank" rel="noopener noreferrer">${escapeHtml(r.label)}</a></h2>`,
+      '<p class="latest-date">',
+      escapeHtml(r.dateLabel),
+      ' <span class="meta-sep">&middot;</span> ',
+      `<a class="download-link" href="${r.href}" download="${escapeHtml(downloadName(r))}">Download</a>`,
+      "</p>",
       "</div>",
     ].join("");
   }
@@ -63,8 +71,12 @@
   function renderReportRow(r) {
     return [
       "<li>",
-      `<a href="${r.href}">${escapeHtml(r.label)}</a>`,
-      `<span class="report-date">${escapeHtml(r.dateLabel)}</span>`,
+      `<a href="${r.href}" target="_blank" rel="noopener noreferrer">${escapeHtml(r.label)}</a>`,
+      '<span class="report-date">',
+      escapeHtml(r.dateLabel),
+      ' <span class="meta-sep">&middot;</span> ',
+      `<a class="download-link" href="${r.href}" download="${escapeHtml(downloadName(r))}">Download</a>`,
+      "</span>",
       "</li>",
     ].join("");
   }

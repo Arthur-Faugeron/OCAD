@@ -33,36 +33,57 @@ body {
 }
 
 .page {
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 4rem 1.5rem 3rem;
+  padding: 3rem 2rem 3rem;
+  border-left: 1px solid var(--camel);
+  border-right: 1px solid var(--camel);
 }
 
-/* Utility nav */
+/* Site header */
+
+.site-header {
+  background: var(--navy);
+  border-bottom: 3px solid var(--olive);
+}
 
 .utility-nav {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.15rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  margin-bottom: 2.5rem;
+}
+
+.utility-nav a {
+  text-decoration: none;
+}
+
+.utility-nav a:first-child {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--ivory);
+}
+
+.utility-nav a:first-child:hover {
+  color: var(--camel);
+}
+
+.utility-nav a:last-child {
   font-family: var(--font-sans);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: var(--camel);
 }
 
-.utility-nav a {
-  color: var(--tweed);
-  text-decoration: none;
-}
-
-.utility-nav a:hover {
-  color: var(--olive);
-}
-
-.utility-nav a:first-child {
-  color: var(--navy);
+.utility-nav a:last-child:hover {
+  color: var(--ivory);
 }
 
 /* Masthead */
@@ -110,7 +131,7 @@ body {
   margin: 1.75rem 0 1rem;
   border-top: 3px solid var(--navy);
   padding-top: 3px;
-  border-bottom: 1px solid var(--navy);
+  border-bottom: 1px solid var(--olive);
 }
 
 .rule-light {
@@ -169,7 +190,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--navy);
+  color: var(--olive);
 }
 
 .latest-title {
@@ -195,6 +216,26 @@ body {
   font-family: var(--font-sans);
   font-size: 0.82rem;
   color: var(--navy);
+}
+
+.latest-date .meta-sep {
+  color: var(--tweed);
+}
+
+.download-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--camel);
+  text-underline-offset: 0.15em;
+}
+
+.download-link:hover {
+  color: var(--olive);
+  text-decoration-color: var(--olive);
+}
+
+.latest-card .download-link {
+  text-decoration-color: var(--tweed);
 }
 
 /* Call to action (home) */
@@ -292,7 +333,7 @@ body {
   font-style: italic;
   font-size: 1.05rem;
   color: var(--navy);
-  border-bottom: 1px solid var(--camel);
+  border-bottom: 1px solid var(--olive);
   padding-bottom: 0.4rem;
 }
 
@@ -396,6 +437,7 @@ body {
   color: var(--tweed);
   white-space: nowrap;
 }
+
 
 /* Colophon */
 
