@@ -1,0 +1,143 @@
+/* =========================================================================
+   OCAD — One Company A Day
+   TEMPLATE: serie_Mining & Material
+   Design system: Old Money / Institutional Research / European Financial
+   Journal / Traditional Investment Banking.
+   Palette — Ivory #F5F1E8 / Oxford Navy #172A3A / Tweed Brown #6B5744 /
+             Deep Olive #3F4A32 / Camel Beige #C8AE82
+   Typography — Liberation Serif (headings, metric-compatible with a
+   classical serif) / Liberation Sans (tables, footnotes).
+   ========================================================================= */
+
+@page {
+  size: 216mm 279mm;
+  margin: 24mm 18mm 20mm 18mm;
+  background: #F5F1E8;
+  @bottom-left {
+    content: "OCAD — One Company A Day";
+    font-family: "Liberation Sans";
+    font-size: 7.6pt;
+    color: #6B5744;
+    letter-spacing: 0.04em;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: "Liberation Sans";
+    font-size: 7.6pt;
+    color: #6B5744;
+  }
+  @top-left {
+    content: "SQM — Sociedad Química y Minera de Chile S.A.";
+    font-family: "Liberation Sans";
+    font-size: 7.6pt;
+    color: #6B5744;
+    letter-spacing: 0.02em;
+  }
+  @top-right {
+    content: "Mining & Material — 16 August 2026";
+    font-family: "Liberation Sans";
+    font-size: 7.6pt;
+    color: #6B5744;
+  }
+}
+
+@page cover {
+  margin: 0;
+  background: #F5F1E8;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: #F5F1E8;
+  color: #172A3A;
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 9.6pt;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 { font-family: "Liberation Serif", serif; color: #172A3A; font-weight: 700; }
+
+/* ---------------------------- COVER PAGE ------------------------------ */
+.cover { page: cover; page-break-after: always; height: 279mm; width: 216mm;
+  background: #F5F1E8; position: relative; padding: 0; }
+.cover-band-top { background: #172A3A; height: 9mm; width: 100%; }
+.cover-band-thin { background: #C8AE82; height: 1.6mm; width: 100%; }
+.cover-inner { padding: 16mm 20mm 0 20mm; }
+.cover-eyebrow { font-family:"Liberation Sans"; letter-spacing: 0.18em; text-transform: uppercase;
+  font-size: 9.2pt; color: #6B5744; margin-bottom: 3mm; }
+.cover-title { font-family: "Liberation Serif"; font-size: 34pt; font-weight: 700; color: #172A3A;
+  line-height: 1.08; margin: 0 0 2mm 0; }
+.cover-subtitle { font-family:"Liberation Serif"; font-style: italic; font-size: 13.5pt; color:#3F4A32; margin: 0 0 8mm 0; }
+.cover-meta-row { display:flex; justify-content: space-between; border-top: 0.8pt solid #172A3A; border-bottom: 0.8pt solid #172A3A;
+  padding: 3.2mm 0; margin-bottom: 8mm; }
+.cover-meta-item { font-family:"Liberation Sans"; font-size: 8.6pt; }
+.cover-meta-label { color:#6B5744; text-transform: uppercase; letter-spacing: 0.08em; font-size:7.4pt; display:block; margin-bottom:0.8mm;}
+.cover-meta-value { color:#172A3A; font-weight:700; font-size:9.6pt; }
+.cover-price-box { border: 0.9pt solid #172A3A; padding: 5mm 7mm; display:flex; justify-content: space-between; align-items: center; margin-bottom:6mm; background:#FFFEFA;}
+.cover-price { font-family:"Liberation Serif"; font-size: 25pt; font-weight:700; color:#172A3A;}
+.cover-change-pos { color:#3F4A32; font-family:"Liberation Sans"; font-size:11pt; font-weight:700;}
+.cover-chartcap { font-family:"Liberation Sans"; font-size:7.4pt; color:#6B5744; margin-top:1.5mm; }
+.cover-chart-wrap { border: 0.6pt solid #C8AE82; padding: 4mm 5mm 2mm 5mm; margin-bottom: 5mm; background:#FFFEFA;}
+.cover-footer { position:absolute; bottom:14mm; left:20mm; right:20mm; border-top: 0.8pt solid #C8AE82; padding-top:4mm;
+  display:flex; justify-content: space-between; font-family:"Liberation Sans"; font-size:7.8pt; color:#6B5744;}
+
+/* ---------------------------- SECTIONS -------------------------------- */
+.section-break { page-break-before: always; }
+.section-title { font-family:"Liberation Serif"; font-size: 18pt; font-weight:700; color:#172A3A;
+  border-bottom: 1.4pt solid #172A3A; padding-bottom: 2mm; margin: 0 0 5mm 0; }
+.section-kicker { font-family:"Liberation Sans"; letter-spacing:0.14em; text-transform:uppercase; font-size:8pt; color:#6B5744; margin-bottom:1mm;}
+h2.subhead { font-family:"Liberation Serif"; font-size:13pt; color:#172A3A; margin: 7mm 0 2.5mm 0; border-left: 2.6pt solid #C8AE82; padding-left:3mm; }
+h3.subsubhead { font-family:"Liberation Serif"; font-size: 11pt; font-style: italic; color:#3F4A32; margin: 4.5mm 0 2mm 0; }
+
+p { margin: 0 0 3mm 0; text-align: justify; hyphens: auto; orphans:3; widows:3; }
+.lede { font-size: 10.6pt; color:#172A3A; }
+
+.callout { background:#FFFEFA; border:0.6pt solid #C8AE82; border-left: 2.6pt solid #3F4A32; padding: 3.5mm 4.5mm; margin: 3mm 0 4mm 0; }
+.callout-label { font-family:"Liberation Sans"; text-transform:uppercase; letter-spacing:0.1em; font-size:7.2pt; color:#6B5744; margin-bottom:1mm; display:block;}
+
+/* ---------------------------- TABLES ------------------------------------ */
+table { width:100%; border-collapse: collapse; margin: 3mm 0 5mm 0; font-family:"Liberation Sans"; font-size: 8.6pt; }
+table.data thead th { background:#172A3A; color:#F5F1E8; font-weight:700; text-align:left; padding: 2mm 2.6mm;
+  border-bottom: 0.8pt solid #172A3A; font-size: 8.2pt; }
+table.data thead th.num { text-align:right; }
+table.data tbody td { padding: 1.7mm 2.6mm; border-bottom: 0.5pt solid #D9D2C2; color:#172A3A; }
+table.data tbody td.num { text-align:right; font-variant-numeric: tabular-nums; }
+table.data tbody td.label { text-align:left; }
+table.data tbody tr:nth-child(even) { background: rgba(200,174,130,0.16); }
+table.data tfoot td { font-weight:700; border-top:0.9pt solid #172A3A; padding: 1.8mm 2.6mm; }
+table caption { caption-side: top; text-align:left; font-family:"Liberation Serif"; font-style:italic; font-size:9pt; color:#3F4A32; padding: 0 0 1.5mm 0; }
+thead { display: table-header-group; }
+tr { page-break-inside: avoid; }
+
+/* ---------------------------- MISC --------------------------------------- */
+.chart-fig { text-align:center; margin: 4mm 0 5mm 0; page-break-inside: avoid; }
+.chart-fig img { width: 100%; max-width: 100%; }
+.two-col { display:flex; gap: 6mm; }
+.two-col > div { flex: 1; }
+.small { font-size: 8.2pt; color:#3F4A32; }
+.footnote { font-family:"Liberation Sans"; font-size:7.4pt; color:#6B5744; border-top:0.5pt solid #C8AE82; margin-top:5mm; padding-top:2mm; text-align:left;}
+.badge-row { display:flex; gap:3mm; margin: 2mm 0 4mm 0; flex-wrap: wrap;}
+.badge { border:0.6pt solid #172A3A; padding: 1.6mm 3mm; font-family:"Liberation Sans"; font-size:7.8pt; color:#172A3A; }
+.disclaimer { font-family:"Liberation Sans"; font-size: 7.6pt; color:#6B5744; text-align:justify; border-top: 0.9pt solid #172A3A; padding-top:3mm; margin-top:6mm;}
+.framework-grid { width:100%; border-collapse:collapse; }
+.framework-grid td { border-bottom:0.5pt solid #D9D2C2; padding: 2.2mm 2mm; vertical-align:top; }
+.framework-grid td.k { font-family:"Liberation Serif"; font-style:italic; color:#3F4A32; width: 34mm; font-size:9pt;}
+.framework-grid td.v { font-size:9.2pt; }
+.thesis-cols { display:flex; gap:5mm; }
+.thesis-col { flex:1; border-top: 2pt solid; padding-top:2mm; }
+.thesis-col.bull { border-color:#3F4A32; }
+.thesis-col.base { border-color:#6B5744; }
+.thesis-col.bear { border-color:#172A3A; }
+.thesis-col h4 { font-family:"Liberation Serif"; font-size:10.6pt; margin:0 0 2mm 0; }
+.thesis-col ul { margin:0; padding-left:4mm; }
+.thesis-col li { margin-bottom: 1.8mm; text-align:left; font-size:8.8pt; }
+ul.plain { padding-left:4.5mm; margin:0 0 3mm 0;}
+ul.plain li { margin-bottom:1.6mm; text-align:justify; }
+.src-org { font-weight:700; }
+.src-item { margin-bottom: 2.4mm; font-size:8.6pt; }
