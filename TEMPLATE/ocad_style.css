@@ -1,0 +1,391 @@
+/* =========================================================================
+   OCAD - One Company A Day
+   Master stylesheet - Old Money / Institutional Research / European
+   Financial Journal / Traditional Investment Banking design system.
+   This is the single shared template referenced by every OCAD report.
+   ========================================================================= */
+
+@page {
+  size: A4;
+  margin: 30mm 20mm 22mm 20mm;
+  background-color: #F5F1E8;
+  background: #F5F1E8;
+
+  @top-left {
+    content: "OCAD · ONE COMPANY A DAY";
+    font-family: "Liberation Sans", sans-serif;
+    font-size: 7.6pt;
+    letter-spacing: 0.09em;
+    color: #6B5744;
+  }
+  @top-right {
+    content: string(section-label);
+    font-family: "Liberation Sans", sans-serif;
+    font-size: 7.6pt;
+    letter-spacing: 0.06em;
+    color: #6B5744;
+    text-transform: uppercase;
+  }
+  @bottom-left {
+    content: string(report-id);
+    font-family: "Liberation Sans", sans-serif;
+    font-size: 7.6pt;
+    color: #6B5744;
+  }
+  @bottom-right {
+    content: "Page " counter(page) " of " counter(pages);
+    font-family: "Liberation Sans", sans-serif;
+    font-size: 7.6pt;
+    color: #6B5744;
+  }
+}
+
+@page cover {
+  margin: 0mm;
+  background-color: #F5F1E8;
+  background: #F5F1E8;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-left { content: none; }
+  @bottom-right { content: none; }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #F5F1E8;
+  color: #172A3A;
+  font-family: "Liberation Serif", "Times New Roman", serif;
+  font-size: 9.6pt;
+  line-height: 1.5;
+}
+
+body { counter-reset: page 1; }
+
+/* running headers/footers helpers */
+.section-marker { string-set: section-label content(); position: absolute; visibility: hidden; }
+.reportid-marker { string-set: report-id content(); position: absolute; visibility: hidden; }
+
+/* ---------------------------------------------------------------- COVER */
+.cover-page {
+  page: cover;
+  width: 210mm;
+  height: 297mm;
+  background: #F5F1E8;
+  position: relative;
+  page-break-after: always;
+  padding: 18mm 18mm 16mm 18mm;
+}
+.cover-frame {
+  position: absolute;
+  top: 10mm; left: 10mm; right: 10mm; bottom: 10mm;
+  border: 0.75pt solid #172A3A;
+}
+.cover-frame-inner {
+  position: absolute;
+  top: 12.5mm; left: 12.5mm; right: 12.5mm; bottom: 12.5mm;
+  border: 0.5pt solid #C8AE82;
+}
+.cover-eyebrow {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 9.5pt;
+  letter-spacing: 0.28em;
+  color: #6B5744;
+  text-align: center;
+  margin-top: 20mm;
+}
+.cover-series {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 8.4pt;
+  letter-spacing: 0.18em;
+  color: #3F4A32;
+  text-align: center;
+  margin-top: 3mm;
+  text-transform: uppercase;
+}
+.cover-logo-wrap {
+  text-align: center;
+  margin-top: 14mm;
+  height: 26mm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cover-logo-wrap img { max-height: 24mm; max-width: 110mm; }
+.cover-name-fallback {
+  font-family: "Lora", serif;
+  font-weight: 700;
+  font-size: 26pt;
+  color: #172A3A;
+  text-align: center;
+}
+.cover-title {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  font-size: 27pt;
+  text-align: center;
+  color: #172A3A;
+  margin-top: 9mm;
+  padding: 0 8mm;
+}
+.cover-ticker-line {
+  text-align: center;
+  margin-top: 4mm;
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 11pt;
+  color: #6B5744;
+  letter-spacing: 0.04em;
+}
+.cover-rule {
+  width: 34mm;
+  height: 0;
+  border-top: 0.75pt solid #C8AE82;
+  margin: 6mm auto;
+}
+.cover-price-block {
+  text-align: center;
+  margin-top: 2mm;
+}
+.cover-price-value {
+  font-family: "Lora", serif;
+  font-size: 15pt;
+  font-weight: 600;
+  color: #172A3A;
+}
+.cover-price-meta {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 8pt;
+  color: #6B5744;
+  margin-top: 1mm;
+}
+.cover-chart-wrap {
+  margin: 8mm 14mm 0 14mm;
+  border: 0.5pt solid #C8AE82;
+  padding: 4mm 4mm 2mm 4mm;
+  background: #FBF9F3;
+}
+.cover-chart-wrap img { width: 100%; display: block; }
+.cover-chart-caption {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 7.2pt;
+  color: #6B5744;
+  text-align: center;
+  margin-top: 2mm;
+  letter-spacing: 0.02em;
+}
+.cover-footer-grid {
+  position: absolute;
+  bottom: 16mm;
+  left: 18mm;
+  right: 18mm;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 8pt;
+  color: #172A3A;
+  border-top: 0.5pt solid #172A3A;
+  padding-top: 3mm;
+}
+.cover-footer-grid div { text-align: left; }
+.cover-footer-label {
+  display: block;
+  font-size: 6.6pt;
+  letter-spacing: 0.1em;
+  color: #6B5744;
+  text-transform: uppercase;
+  margin-bottom: 0.6mm;
+}
+
+/* ---------------------------------------------------------------- BODY */
+.section { page-break-before: always; }
+.section:first-of-type { page-break-before: auto; }
+
+h1.section-title {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  font-size: 16.5pt;
+  color: #172A3A;
+  border-bottom: 1pt solid #172A3A;
+  padding-bottom: 2.2mm;
+  margin: 0 0 5mm 0;
+  letter-spacing: 0.01em;
+}
+h2.subsection-title {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  font-size: 12.3pt;
+  color: #172A3A;
+  margin: 7mm 0 2.8mm 0;
+  border-left: 2.4pt solid #C8AE82;
+  padding-left: 3mm;
+}
+h3.sub-subsection-title {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  font-size: 10.6pt;
+  color: #3F4A32;
+  margin: 5mm 0 2mm 0;
+}
+
+p { text-align: justify; margin: 0 0 2.6mm 0; text-justify: inter-word; }
+p.lede { font-size: 10.2pt; color: #172A3A; }
+
+.small-caps-label {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 7.6pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6B5744;
+}
+
+ul, ol { margin: 2mm 0 3mm 0; padding-left: 5mm; }
+li { margin-bottom: 1.4mm; text-align: justify; }
+
+strong { color: #172A3A; }
+
+/* --------------------------------------------------------------- TABLE */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 3mm 0 4mm 0;
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 8.1pt;
+  background: #F5F1E8;
+}
+table caption {
+  text-align: left;
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 7.6pt;
+  letter-spacing: 0.06em;
+  color: #6B5744;
+  text-transform: uppercase;
+  margin-bottom: 1.4mm;
+  caption-side: top;
+}
+thead tr { background: #172A3A; }
+thead th {
+  color: #F5F1E8;
+  font-weight: 700;
+  text-align: left;
+  padding: 2mm 2.4mm;
+  font-size: 7.9pt;
+  letter-spacing: 0.02em;
+}
+thead th.num, td.num { text-align: right; }
+tbody td {
+  padding: 1.7mm 2.4mm;
+  border-bottom: 0.4pt solid #C8AE82;
+  color: #172A3A;
+}
+tbody tr:nth-child(even) { background: #EFE8D8; }
+tbody tr.total-row td {
+  border-top: 0.75pt solid #172A3A;
+  font-weight: 700;
+}
+table.wide-metric td.label { color: #3F4A32; }
+
+.table-footnote {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 6.9pt;
+  color: #6B5744;
+  margin-top: -2mm;
+  margin-bottom: 4mm;
+}
+
+/* -------------------------------------------------------------- CHARTS */
+.chart-block { margin: 4mm 0 5mm 0; page-break-inside: avoid; }
+.chart-block img { width: 100%; display: block; }
+.chart-title {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 8.2pt;
+  font-weight: 700;
+  color: #172A3A;
+  margin-bottom: 1mm;
+}
+.chart-caption {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 6.9pt;
+  color: #6B5744;
+  margin-top: 1.2mm;
+}
+.chart-row { display: flex; gap: 5mm; }
+.chart-row .chart-block { flex: 1; }
+
+/* ------------------------------------------------------------- BOXES */
+.callout {
+  background: #EFE8D8;
+  border-left: 2.6pt solid #172A3A;
+  padding: 3mm 4mm;
+  margin: 3.5mm 0;
+  page-break-inside: avoid;
+}
+.callout .callout-title {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 7.6pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #172A3A;
+  font-weight: 700;
+  margin-bottom: 1.4mm;
+}
+
+.two-col { display: flex; gap: 6mm; }
+.two-col > div { flex: 1; }
+
+.framework-grid { width: 100%; border-collapse: collapse; margin-top: 2mm; }
+.framework-grid td {
+  padding: 1.8mm 2.5mm;
+  vertical-align: top;
+  border-bottom: 0.4pt solid #C8AE82;
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 8.2pt;
+}
+.framework-grid td.fw-label {
+  width: 34mm;
+  font-weight: 700;
+  color: #172A3A;
+  text-transform: uppercase;
+  font-size: 7.4pt;
+  letter-spacing: 0.04em;
+}
+
+.moat-scale {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 8pt;
+  color: #3F4A32;
+  font-weight: 700;
+}
+
+.disclaimer {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 7.4pt;
+  color: #6B5744;
+  border-top: 0.5pt solid #172A3A;
+  padding-top: 3mm;
+  margin-top: 8mm;
+  text-align: justify;
+}
+
+.footnote-block {
+  font-family: "Liberation Sans", sans-serif;
+  font-size: 7.2pt;
+  color: #6B5744;
+  margin-top: 6mm;
+  border-top: 0.4pt solid #C8AE82;
+  padding-top: 2mm;
+}
+.footnote-block p { text-align: left; margin-bottom: 1mm; }
+
+.source-list { font-family: "Liberation Sans", sans-serif; font-size: 8pt; }
+.source-list .src-group-title {
+  font-family: "Lora", serif;
+  font-size: 10.6pt;
+  font-weight: 600;
+  color: #172A3A;
+  margin: 5mm 0 2mm 0;
+}
+.source-entry { margin-bottom: 2.4mm; padding-left: 3mm; border-left: 1.4pt solid #C8AE82; text-align:left; }
+.source-entry .src-org { font-weight: 700; color: #172A3A; }
+.source-entry .src-meta { color: #6B5744; font-size: 7.4pt; }
