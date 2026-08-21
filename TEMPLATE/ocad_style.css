@@ -366,6 +366,7 @@ table.wide-metric td.label { color: #3F4A32; }
   padding-top: 3mm;
   margin-top: 8mm;
   text-align: justify;
+  page-break-inside: avoid;
 }
 
 .footnote-block {
