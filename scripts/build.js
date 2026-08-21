@@ -22,27 +22,27 @@ const SERIES_ROOT = path.join(ROOT, "SERIES");
 // Canonical series list, exact spelling as used in CLAUDE.md / on report covers.
 const SERIES_GROUPS = [
   {
-    name: "Energy & Materials",
-    series: ["Energy", "Mining & Material"],
+    name: "Energy and Materials",
+    series: ["Energy", "Mining and Material"],
   },
   {
-    name: "Industrials, Aerospace & Transport",
-    series: ["Industrial", "Aerospace & Defense", "Transportation", "Automotive"],
+    name: "Industrials, Aerospace and Transport",
+    series: ["Industrial", "Aerospace and Defense", "Transportation", "Automotive"],
   },
   {
-    name: "Consumer & Retail",
-    series: ["Consumer Staple", "Consumer Discretionary", "Luxury", "Retail", "Food & Beverage"],
+    name: "Consumer and Retail",
+    series: ["Consumer Staple", "Consumer Discretionary", "Luxury", "Retail", "Food and Beverage"],
   },
   {
-    name: "Healthcare & Life Sciences",
-    series: ["Healthcare", "Pharma & Biotech", "Medical Device"],
+    name: "Healthcare and Life Sciences",
+    series: ["Healthcare", "Pharma and Biotech", "Medical Device"],
   },
   {
-    name: "Technology & Communications",
-    series: ["Technology", "Semiconductor", "Software", "Internet & Digital", "Telecommunications & Media"],
+    name: "Technology and Communications",
+    series: ["Technology", "Semiconductor", "Software", "Internet and Digital", "Telecommunications and Media"],
   },
   {
-    name: "Financials & Real Assets",
+    name: "Financials and Real Assets",
     series: ["Financial", "Bank", "Insurance", "Asset Management", "Real Estate", "Utilities", "Infrastructure"],
   },
 ];
