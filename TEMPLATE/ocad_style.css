@@ -254,6 +254,8 @@ table {
   font-size: 8.1pt;
   background: #F5F1E8;
 }
+thead { display: table-header-group; }
+tbody tr { page-break-inside: avoid; break-inside: avoid; }
 table caption {
   text-align: left;
   font-family: "Liberation Sans", sans-serif;
