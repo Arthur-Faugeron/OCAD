@@ -6,3 +6,6 @@ CLAUDE.md
 reports.json
 _site/
 list.json
+*.lock
+~$*
+~*.tmp
