@@ -1,0 +1,220 @@
+%% =========================================================================
+%% OCAD report - LaTeX template with MOCK data. Compile: latexmk -xelatex main.tex
+%% Replace the mock company, text, tables and charts with real content.
+%% =========================================================================
+\documentclass[10pt,a4paper]{article}
+\usepackage{ocad}
+\graphicspath{{charts/}}
+\hypersetup{pdftitle={OCAD - Mock Industries Corporation},pdfauthor={Arthur Faugeron}}
+\ocadSetReportID{OCAD report: Mock Industries Corporation (MOCK), 3 October 2026}
+
+\newcommand{\mocktext}{This is mock paragraph text used to test justification, spacing and hyphenation in the OCAD report style. It states a placeholder claim with a number, for example a 12.4\% operating margin sustained over five years, and then explains the economic reason behind it in the direct, analytical tone expected of institutional research.}
+
+\begin{document}
+
+%% ------------------------------------------------------------- COVER
+\ocadcoversetup{company={Mock Industries Corporation}, ticker={MOCK}, exchange={Mock Stock Exchange},
+  series={Industrial}, date={3 October 2026}, analyst={Arthur Faugeron},
+  price={US\$ 123.45 per share}, pricenote={Closing price, Friday 2 October 2026},
+  chart={cover_price.png}, chartcaption={MOCK daily closing price, last three months, US\$ per share. Source: mock data.},
+  logo={mock_logo.png}}
+\makeocadcover
+
+%% ------------------------------------------------------------- EXECUTIVE SUMMARY
+\section{Executive Summary}
+\ocadlede{\mocktext\ \Sourced}
+
+\subsection{Business}
+\mocktext\ \Reasoned
+
+\subsection{Financial Condition}
+\mocktext\ \Calculated
+
+\begin{ocadtable}{Valuation snapshot at US\$123.45}{L R L}
+\ocadtablehead{\ocadH{Metric}&\ocadH{Value}&\ocadH{Basis}}
+Market capitalization & US\$18.5bn & Calculated: 150m shares x US\$123.45\ocadhr
+Enterprise value & US\$19.6bn & Calculated: market cap + net debt\ocadhr
+P/E, trailing & 11.9x & Sourced, mock provider\ocadhr
+EV/EBITDA & 6.6x & Sourced, mock provider\ocadhr
+P/FCF & 12.8x & Calculated\ocadhr
+Dividend yield & 2.1\% & Sourced, mock provider\ocadhr
+\end{ocadtable}
+\ocadtablenote{Source: mock data. Notes sit directly under the table in small sans-serif type.}
+
+\subsection{Investment Framework}
+\begin{ocadframework}
+\fwrow{What is attractive}{Placeholder: stable margins and cash conversion above 1.5x net income.}
+\fwrow{What is concerning}{Placeholder: leverage and customer concentration.}
+\fwrow{What must go right}{Placeholder: capacity ramp on schedule.}
+\fwrow{What could break the thesis}{Placeholder: input cost shock.}
+\fwrow{Priced in}{Placeholder: steady 12\% margin with 4\% growth.}
+\end{ocadframework}
+
+\subsection{Investment Profile}
+\begin{ocadtable}{Assessment by dimension}{L L}
+\ocadtablehead{\ocadH{Dimension}&\ocadH{Assessment}}
+Business quality & Good: placeholder rationale\ocadhr
+Financial quality & Good: placeholder rationale\ocadhr
+Competitive position & Moderate moat\ocadhr
+Growth profile & Moderate\ocadhr
+Balance-sheet risk & Low to moderate\ocadhr
+Valuation & Fair\ocadhr
+Market and technical profile & Neutral\ocadhr
+\end{ocadtable}
+
+%% ------------------------------------------------------------- A
+\section{A. About the Business}
+\subsection{A1. Business Environment}
+\mocktext\ \Sourced\par
+\mocktext
+\ocadchart{mix.png}{Revenue and cost pools: mock data}{Source: mock data, FY2025. Units: US\$ million.}
+\begin{ocadcallout}{Industry stage}\mocktext\end{ocadcallout}
+
+\subsection{A2. What Does the Company Do?}
+\mocktext
+\subsubsection{How one dollar of revenue is used}
+\mocktext\ \Calculated
+\begin{ocadflow}{3}
+\flowbox{1. Customer}{Mock customers: industrial buyers and distributors}
+\flowbox{2. Product and service}{Mock product lines and service contracts}
+\flowbox{3. Revenue}{Segment A US\$4.3bn, Segment B US\$1.4bn}
+\end{ocadflow}
+\begin{ocadflow}{4}
+\flowbox{4. Costs}{Materials 15.3c, labor 10.5c per dollar}
+\flowbox{5. Operating profit}{18.0c per dollar}
+\flowbox{6. Cash flow}{Operating cash flow US\$2.35bn}
+\flowbox{7. Capital allocation}{Capex, dividends, buybacks}
+\end{ocadflow}
+
+\subsection{A3. Business and Relationship Network}
+\begin{ocadtable}{Ecosystem map}{>{\raggedright\arraybackslash}p{28mm} L L}
+\ocadtablehead{\ocadH{Node}&\ocadH{Relationship}&\ocadH{Why it matters economically}}
+Supplier A & Sole source for a key component & Supply continuity and pricing\ocadhr
+Customer B & Largest customer, 14\% of revenue & Concentration risk\ocadhr
+Partner C & Joint venture in Asia & Market access\ocadhr
+Subsidiary D & Wholly owned manufacturing unit & Cost and capacity\ocadhr
+\end{ocadtable}
+
+\subsection{A4. Competition}
+\begin{ocadtable}{Competitive comparison, US\$}{L R R R R}
+\ocadtablehead{\ocadH{Company}&\ocadH{Revenue}&\ocadH{Operating margin}&\ocadH{EV/EBITDA}&\ocadH{Net debt}}
+Mock Co & 12.4bn & 18.0\% & 6.6x & 1.3bn\ocadhr
+Peer A & 9.1bn & 14.2\% & 7.9x & 2.0bn\ocadhr
+Peer B & 15.3bn & 12.9\% & 5.8x & 3.1bn\ocadhr
+Peer C & 6.2bn & 9.6\% & 8.8x & 0.9bn\ocadhr
+\end{ocadtable}
+\ocadchart{peers.png}{Peer valuation and profitability}{Source: mock data. Units: times and percent.}
+\subsection{A5. Competitive Differences}
+\mocktext
+\subsection{A6. Industry Trend}
+\mocktext
+\subsection{A7. Management}
+\begin{ocadtable}{Executive team}{L L}
+\ocadtablehead{\ocadH{Name}&\ocadH{Position}}
+Jane Placeholder & Chief Executive Officer\ocadhr
+John Example & Chief Financial Officer\ocadhr
+\end{ocadtable}
+\mocktext
+
+%% ------------------------------------------------------------- B
+\section{B. Evaluation}
+\subsection{B1. Financial and Operating Metrics}
+\ocadcsvtable{Mock financial summary, US\$ million}{data/financials.csv}
+\ocadtablenote{Source: mock CSV file data/financials.csv, loaded with the csv table macro.}
+\ocadchart{revenue.png}{Revenue and annual growth}{Source: mock data, FY2021 to FY2025. Units: US\$ million and percent.}
+\ocadchart{margins.png}{Operating margin and net margin}{Source: mock data. Units: percent of revenue.}
+\subsection{B2. Risks}
+\begin{ocadtable}{Risk register ranked by probability times impact}{>{\raggedright\arraybackslash}p{9mm} L >{\raggedright\arraybackslash}p{18mm} >{\raggedright\arraybackslash}p{16mm} L}
+\ocadtablehead{\ocadH{Rank}&\ocadH{Risk}&\ocadH{Probability}&\ocadH{Impact}&\ocadH{Description}}
+1 & Input costs & High & High & Placeholder description of the risk\ocadhr
+2 & Leverage & Medium & High & Placeholder description of the risk\ocadhr
+3 & Competition & Medium & Medium & Placeholder description of the risk\ocadhr
+\end{ocadtable}
+\subsection{B3. Valuation}
+\mocktext
+\subsection{B4. Capital Market and Stock Analysis}
+\ocadchart{relative.png}{Total return versus benchmark}{Source: mock data. Index, start = 100.}
+\begin{ocadtable}{Volatility and risk}{L R L}
+\ocadtablehead{\ocadH{Measure}&\ocadH{Value}&\ocadH{Basis}}
+Annualized volatility & 28.4\% & Calculated, mock\ocadhr
+Beta versus benchmark & 0.92 & Calculated, mock\ocadhr
+Maximum drawdown & -21.7\% & Calculated, mock\ocadhr
+\end{ocadtable}
+
+%% ------------------------------------------------------------- C
+\section{C. Financial Statements}
+\subsection{C1. Income Statement}
+\mocktext
+\subsection{C2. Balance Sheet}
+\ocadchart{debt.png}{Debt, cash and net debt}{Source: mock data. Units: US\$ million.}
+\subsection{C3. Cash Flow Statement}
+\ocadchart{cashflow.png}{Operating cash flow, capital expenditure and free cash flow}{Source: mock data. Units: US\$ million.}
+\subsection{C5. Discounted Cash Flow (DCF) Model}
+\begin{ocadtable}{Sensitivity: WACC (rows) against terminal growth (columns), value per share}{L R R R R R}
+\ocadtablehead{\ocadH{WACC}&\ocadH{1.5\%}&\ocadH{2.0\%}&\ocadH{2.5\%}&\ocadH{3.0\%}&\ocadH{3.5\%}}
+9.5\% & US\$128 & US\$135 & US\$143 & US\$152 & US\$163\ocadhr
+10.0\% & US\$119 & US\$125 & US\$132 & US\$139 & US\$148\ocadhr
+10.5\% & US\$111 & US\$116 & US\$122 & US\$128 & US\$135\ocadhr
+11.0\% & US\$104 & US\$108 & US\$113 & US\$118 & US\$124\ocadhr
+\end{ocadtable}
+\begin{ocadfootnotes}Calculated. Mock assumptions: WACC 10.5\%, terminal growth 2.5\%. Footnote blocks carry data sources, adjustments and definitions.\end{ocadfootnotes}
+
+%% ------------------------------------------------------------- D, E
+\section{D. Investment Thesis}
+\subsection{Bull Case}\mocktext
+\subsection{Bear Case}\mocktext
+\subsection{Base Case}\mocktext
+\subsection{Things to Monitor}
+\begin{ocadtable}{Monitoring list}{L L L L}
+\ocadtablehead{\ocadH{Metric or event}&\ocadH{Why it matters}&\ocadH{Positive}&\ocadH{Negative}}
+Operating margin & Core profitability & Above 17\% & Below 15\%\ocadhr
+Net leverage & Balance-sheet risk & Under 1.5x & Above 2.0x\ocadhr
+\end{ocadtable}
+
+\section{E. Final Investment Framework}
+\begin{ocadframework}
+\fwrow{Business quality}{Placeholder assessment and explanation.}
+\fwrow{Financial quality}{Placeholder assessment and explanation.}
+\fwrow{Competitive position}{Placeholder assessment and explanation.}
+\fwrow{Management}{Placeholder assessment and explanation.}
+\fwrow{Industry}{Placeholder assessment and explanation.}
+\fwrow{Valuation}{Placeholder assessment and explanation.}
+\fwrow{Principal risk}{Placeholder risk.}
+\fwrow{Key variable}{Placeholder variable.}
+\fwrow{Thesis invalidation}{The investment thesis would become materially weaker if net leverage rises above 2.0x or if operating margin falls below 15\% on a trailing basis.}
+\end{ocadframework}
+
+%% ------------------------------------------------------------- F: long table with repeated headers
+\section{F. Data Table}
+\ocadlongtablesetup
+\begin{longtable}{@{}p{22mm}p{40mm}p{28mm}p{28mm}p{32mm}@{}}
+\rowcolor{ocadNavy}\ocadH{Category}&\ocadH{Metric}&\ocadH{Current}&\ocadH{Prior year}&\ocadH{3Y / 5Y trend}\ocadhr
+\endfirsthead
+\rowcolor{ocadNavy}\ocadH{Category}&\ocadH{Metric}&\ocadH{Current}&\ocadH{Prior year}&\ocadH{3Y / 5Y trend}\ocadhr
+\endhead
+Market & Market cap & US\$18.5bn & US\$16.1bn & Up\ocadhr
+Market & Enterprise value & US\$19.6bn & US\$17.5bn & Up\ocadhr
+Growth & Revenue growth & 10.7\% & 11.4\% & Stable\ocadhr
+Profitability & Operating margin & 18.0\% & 17.0\% & Up\ocadhr
+Profitability & Net margin & 12.5\% & 12.0\% & Up\ocadhr
+Cash flow & Free cash flow & US\$1.45bn & US\$1.30bn & Up\ocadhr
+Leverage & Net debt / EBITDA & 0.4x & 0.7x & Down\ocadhr
+Valuation & P/E & 11.9x & 12.6x & Down\ocadhr
+Market & Beta & 0.92 & 0.95 & Stable\ocadhr
+\end{longtable}
+
+%% ------------------------------------------------------------- G
+\section{G. Sources and Methodology}
+\ocadsourcegroup{Primary Sources}
+\ocadsource{Mock Industries Corporation}{Annual report FY2025}{Published March 2026}{https://www.example.com/annual-report}{Financial statements, segment data}
+\ocadsource{Mock Regulator}{Filing of quarterly results}{August 2026}{https://www.example.com/filings}{Quarterly results and guidance}
+\ocadsourcegroup{Secondary Sources}
+\ocadsource{Mock Industry Association}{Annual industry outlook}{June 2026}{https://www.example.com/outlook}{Industry growth and margins}
+\ocadsourcegroup{Market Data}
+\ocadsource{Mock Data Provider}{Daily price series}{Data to 2 October 2026}{https://www.example.com/data}{Prices, volumes, volatility}
+\ocadsourcegroup{Calculations}
+\mocktext
+\begin{ocaddisclaimer}
+This report has been prepared for personal research purposes only and does not constitute investment advice, financial advice, or a recommendation to buy, sell, or hold any security. The information contained herein has been compiled with the assistance of artificial intelligence and is based on publicly available sources believed to be reliable, but its accuracy and completeness are not guaranteed. Past performance is not indicative of future results. Investors should conduct their own due diligence and consult with a qualified financial professional before making any investment decisions.
+\end{ocaddisclaimer}
+\end{document}

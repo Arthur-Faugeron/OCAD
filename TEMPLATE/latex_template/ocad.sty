@@ -1,0 +1,289 @@
+%% =========================================================================
+%% ocad.sty - One Company A Day (OCAD) report style, LaTeX edition
+%% Old money / institutional research / European financial journal style.
+%% Mirrors TEMPLATE/ocad_style.css (palette, type, page structure, tables).
+%% Compile with XeLaTeX or LuaLaTeX (fontspec required).
+%% =========================================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ocad}[2026/10/03 OCAD report style]
+
+\RequirePackage{etoolbox}
+\newif\ifocad@lora \ocad@lorafalse
+\DeclareOption{lora}{\ocad@loratrue}
+\DeclareOption*{}
+\ProcessOptions\relax
+\RequirePackage{xcolor}
+\RequirePackage{iftex}
+\ifPDFTeX\PackageError{ocad}{Compile with XeLaTeX or LuaLaTeX}{Use: latexmk -xelatex main.tex}\fi
+
+%% ------------------------------------------------------------- PALETTE
+\definecolor{ocadIvory}{HTML}{F5F1E8}   % page background
+\definecolor{ocadNavy}{HTML}{172A3A}    % headings, rules, table headers
+\definecolor{ocadBrown}{HTML}{6B5744}   % secondary text, captions
+\definecolor{ocadOlive}{HTML}{3F4A32}   % secondary accent
+\definecolor{ocadCamel}{HTML}{C8AE82}   % rules, highlights
+\definecolor{ocadZebra}{HTML}{EFE8D8}   % camel mixed into ivory (alt rows)
+\definecolor{ocadPanel}{HTML}{FBF9F3}   % lighter panel (cover chart, flow boxes)
+
+%% ------------------------------------------------------------- PAGE
+\RequirePackage[a4paper,top=30mm,bottom=22mm,left=20mm,right=20mm,
+  headheight=14pt,headsep=7mm,footskip=11mm]{geometry}
+\RequirePackage{microtype}
+\RequirePackage{graphicx}
+\RequirePackage{setspace}
+\RequirePackage{needspace}
+\RequirePackage{nowidow}
+\RequirePackage{lastpage}
+\RequirePackage{fancyhdr}
+\RequirePackage{titlesec}
+\RequirePackage{array}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{colortbl}
+\RequirePackage{multirow}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{raster,skins}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\RequirePackage{pgfplotstable}
+\pgfplotsset{compat=1.16}
+\RequirePackage[hyphens]{url}
+\RequirePackage[hidelinks,pdfusetitle]{hyperref}
+
+\pagecolor{ocadIvory}          % full-bleed ivory background on every page
+\AtBeginDocument{\color{ocadNavy}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.6mm plus 0.6mm minus 0.3mm}
+\setlength{\emergencystretch}{3em}
+\raggedbottom
+\clubpenalty=10000 \widowpenalty=10000 \displaywidowpenalty=10000
+
+%% ------------------------------------------------------------- FONTS
+%% Display: Lora (serif). Body: Liberation Serif. Tables/captions: Liberation Sans.
+%% Each falls back to a classic alternative when a font is not installed.
+\RequirePackage{fontspec}
+\IfFontExistsTF{Liberation Serif}{\setmainfont{Liberation Serif}}{\setmainfont{TeX Gyre Termes}}
+\IfFontExistsTF{Liberation Sans}{\setsansfont{Liberation Sans}}{\setsansfont{TeX Gyre Heros}}
+%% Display face. Default: TeX Gyre Pagella (classical Palatino-style serif), falling back to
+%% Liberation Serif. With the option [lora] the template uses Lora SemiBold (the HTML template face);
+%% use that option when Lora is installed as a STATIC font (variable-font builds of Lora are not
+%% embedded reliably by XeTeX).
+\ifocad@lora
+  \IfFontExistsTF{Lora SemiBold}{%
+    \newfontfamily\ocadDisplaySemi{Lora SemiBold}\newfontfamily\ocadDisplay{Lora SemiBold}%
+  }{%
+    \IfFontExistsTF{Lora}{\newfontfamily\ocadDisplaySemi{Lora}[FakeBold=1.1]\newfontfamily\ocadDisplay{Lora}}{%
+      \PackageWarning{ocad}{Lora not found, using default display font}\ocad@lorafalse}%
+  }%
+\fi
+\ifocad@lora\else
+  \IfFontExistsTF{TeX Gyre Pagella}{%
+    \newfontfamily\ocadDisplay{TeX Gyre Pagella}%
+    \newfontfamily\ocadDisplaySemi{TeX Gyre Pagella}[FakeBold=1.5]%
+  }{%
+    \newfontfamily\ocadDisplay{Liberation Serif}%
+    \newfontfamily\ocadDisplaySemi{Liberation Serif}[FakeBold=1.5]%
+  }%
+\fi
+\makeatletter
+\renewcommand\normalsize{\@setfontsize\normalsize{9.6}{14.4}}
+\renewcommand\small{\@setfontsize\small{8.4}{11.5}}
+\renewcommand\footnotesize{\@setfontsize\footnotesize{7.2}{9.2}}
+\renewcommand\scriptsize{\@setfontsize\scriptsize{6.6}{8.4}}
+\makeatother
+\normalsize
+\newcommand{\ocadSans}[1]{{\sffamily #1}}
+\newcommand{\ocadspaced}[1]{{\addfontfeature{LetterSpace=8}#1}}
+
+%% ------------------------------------------------------------- HEADERS / FOOTERS
+\newcommand{\ocadReportID}{OCAD report}
+\newcommand{\ocadSetReportID}[1]{\renewcommand{\ocadReportID}{#1}}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}\ocadspaced{OCAD - ONE COMPANY A DAY}}
+\fancyhead[R]{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}\ocadspaced{\MakeUppercase{\rightmark}}}
+\fancyfoot[L]{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}\ocadReportID}
+\fancyfoot[R]{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}%
+  \fancyfoot[L]{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}\ocadReportID}%
+  \fancyfoot[R]{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}Page \thepage\ of \pageref{LastPage}}}
+
+%% ------------------------------------------------------------- HEADINGS
+%% Sections are unnumbered (titles carry their own letters, e.g. "A. About the Business")
+%% and always start a new page (titleclass top), as in the HTML template.
+\setcounter{secnumdepth}{0}
+\titleclass{\section}{top}
+\titleformat{\section}[block]
+  {\ocadDisplaySemi\fontsize{16.5}{20}\selectfont\color{ocadNavy}}{}{0pt}{}
+  [{\vspace{2.2mm}\color{ocadNavy}\titlerule[1pt]}]
+\titlespacing*{\section}{0pt}{0pt}{5mm}
+\titleformat{\subsection}[block]
+  {\ocadDisplaySemi\fontsize{12.3}{15}\selectfont\color{ocadNavy}}{}{0pt}
+  {\textcolor{ocadCamel}{\vrule width 2.4pt height 1.05em depth 0.35em}\hspace{3mm}}
+\titlespacing*{\subsection}{0pt}{7mm plus 1mm}{2.8mm}
+\titleformat{\subsubsection}[block]
+  {\ocadDisplaySemi\fontsize{10.6}{13}\selectfont\color{ocadOlive}}{}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{5mm plus 1mm}{2mm}
+\pretocmd{\subsection}{\needspace{9\baselineskip}}{}{}
+\pretocmd{\subsubsection}{\needspace{6\baselineskip}}{}{}
+
+%% lead paragraph and small-caps label
+\newcommand{\ocadlede}[1]{{\fontsize{10.2}{15}\selectfont #1}\par}
+\newcommand{\ocadlabel}[1]{{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}\ocadspaced{\MakeUppercase{#1}}}}
+
+%% provenance tag: Sourced / Reasoned / Calculated
+\newcommand{\ocadtag}[1]{{\setlength{\fboxsep}{1.2pt}\setlength{\fboxrule}{0.4pt}%
+  \fcolorbox{ocadCamel}{ocadIvory}{\sffamily\fontsize{6.4}{7}\selectfont\color{ocadOlive}\ocadspaced{\MakeUppercase{#1}}}}}
+\newcommand{\Sourced}{\ocadtag{Sourced}}
+\newcommand{\Reasoned}{\ocadtag{Reasoned}}
+\newcommand{\Calculated}{\ocadtag{Calculated}}
+
+%% lists
+\RequirePackage{enumitem}
+\setlist{nosep,leftmargin=5mm,itemsep=1.4mm,topsep=2mm}
+\setlist[itemize]{label={\color{ocadCamel}\textbullet}}
+
+%% ------------------------------------------------------------- TABLES
+%% Column types: L (flexible, left), R (flexible, right), C (flexible, centre)
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcommand{\ocadH}[1]{\textcolor{ocadIvory}{\textbf{#1}}}      % header cell
+\newcommand{\ocadhr}{\\\hline}                                  % row end plus thin camel rule
+\newcommand{\ocadtotal}{\hline\arrayrulecolor{ocadNavy}\hline\arrayrulecolor{ocadCamel}}
+\newcommand{\ocadtablefont}{\sffamily\fontsize{8.1}{10.4}\selectfont}
+%% ocadtable{Caption}{column spec}: caption above, navy header row set by user
+\NewDocumentEnvironment{ocadtable}{m m}{%
+  \par\vspace{2mm}\begingroup
+  \needspace{5\baselineskip}%
+  \noindent\ocadlabel{#1}\par\vspace{1.2mm}\nopagebreak
+  \ocadtablefont\setlength{\parskip}{0pt}
+  \setlength{\tabcolsep}{2.4mm}\renewcommand{\arraystretch}{1.3}%
+  \arrayrulecolor{ocadCamel}\setlength{\arrayrulewidth}{0.5pt}%
+  \rowcolors{2}{ocadIvory}{ocadZebra}%
+  \noindent\tabularx{\linewidth}{#2}%
+}{%
+  \endtabularx\par\endgroup\vspace{1mm}%
+}
+\newcommand{\ocadtablehead}[1]{\rowcolor{ocadNavy}#1\ocadhr}
+\newcommand{\ocadtablenote}[1]{{\sffamily\fontsize{6.9}{8.6}\selectfont\color{ocadBrown}\raggedright #1\par}\vspace{2mm}}
+%% Long tables with repeated headers: use longtable with \ocadlonghead (see main.tex)
+\newcommand{\ocadlongtablesetup}{%
+  \ocadtablefont\setlength{\parskip}{0pt}\setlength{\tabcolsep}{2.4mm}\renewcommand{\arraystretch}{1.3}%
+  \arrayrulecolor{ocadCamel}\setlength{\arrayrulewidth}{0.5pt}%
+  \rowcolors{2}{ocadIvory}{ocadZebra}\setlength{\LTpre}{2mm}\setlength{\LTpost}{2mm}}
+%% Data-driven table from a CSV file. \ocadcsvtable{Caption}{file.csv}
+%% First column is left aligned, remaining columns right aligned, header row navy.
+\newcommand{\ocadcsvtable}[2]{%
+  \par\needspace{6\baselineskip}\noindent\ocadlabel{#1}\par\vspace{1.2mm}\nopagebreak
+  \begingroup\ocadtablefont\setlength{\tabcolsep}{2.4mm}\renewcommand{\arraystretch}{1.3}%
+  \arrayrulecolor{ocadCamel}\setlength{\arrayrulewidth}{0.5pt}%
+  \pgfplotstabletypeset[col sep=comma,string type,
+    every head row/.style={before row={\rowcolor{ocadNavy}},after row=\hline},
+    every even row/.style={before row={\rowcolor{ocadZebra}},after row=\hline},
+    every odd row/.style={before row={\rowcolor{ocadIvory}},after row=\hline},
+    every column/.style={column type=r},
+    columns/0/.style={column type=l},
+    every head row/.append style={output empty row=false},
+    postproc cell content/.append code={%
+      \ifnum\pgfplotstablerow<0 \pgfkeyssetvalue{/pgfplots/table/@cell content}{\ocadH{##1}}\fi}
+    ]{#2}%
+  \endgroup\par\vspace{1mm}}
+
+%% ------------------------------------------------------------- CHARTS
+%% \ocadchart[width]{file}{Title}{Caption: source, period, units}
+\newcommand{\ocadchart}[4][\linewidth]{%
+  \par\vspace{2mm}\noindent\begin{minipage}{\linewidth}\centering
+  {\raggedright\sffamily\fontsize{8.2}{10}\selectfont\bfseries\color{ocadNavy}#3\par}\vspace{1mm}
+  \includegraphics[width=#1]{#2}\par\vspace{0.6mm}
+  {\raggedright\sffamily\fontsize{6.9}{8.6}\selectfont\color{ocadBrown}#4\par}
+  \end{minipage}\par\vspace{3mm}}
+%% two charts side by side
+\newcommand{\ocadchartpair}[6]{%
+  \par\vspace{2mm}\noindent\begin{minipage}[t]{0.485\linewidth}
+  {\raggedright\sffamily\fontsize{8.2}{10}\selectfont\bfseries\color{ocadNavy}#2\par}\vspace{1mm}
+  \includegraphics[width=\linewidth]{#1}\par\vspace{0.6mm}
+  {\raggedright\sffamily\fontsize{6.9}{8.6}\selectfont\color{ocadBrown}#3\par}\end{minipage}\hfill
+  \begin{minipage}[t]{0.485\linewidth}
+  {\raggedright\sffamily\fontsize{8.2}{10}\selectfont\bfseries\color{ocadNavy}#5\par}\vspace{1mm}
+  \includegraphics[width=\linewidth]{#4}\par\vspace{0.6mm}
+  {\raggedright\sffamily\fontsize{6.9}{8.6}\selectfont\color{ocadBrown}#6\par}\end{minipage}\par\vspace{3mm}}
+
+%% ------------------------------------------------------------- BOXES
+\newtcolorbox{ocadcallout}[1]{enhanced,colback=ocadZebra,colframe=ocadZebra,
+  boxrule=0pt,sharp corners,left=4mm,right=3mm,top=2.4mm,bottom=2.4mm,
+  borderline west={2.6pt}{0pt}{ocadNavy},before skip=3.5mm,after skip=3.5mm,
+  fonttitle=\sffamily\fontsize{7.6}{9}\bfseries\color{ocadNavy},coltitle=ocadNavy,
+  title={\ocadspaced{\MakeUppercase{#1}}},attach boxed title to top left={xshift=-1mm},
+  boxed title style={empty,left=0pt,top=0pt,bottom=0pt}, colupper=ocadNavy}
+%% framework grid: label | text rows
+\newcommand{\fwrow}[2]{\ocadfwlabel{#1} & \ocadfwtext{#2}\ocadhr}
+\newcommand{\ocadfwlabel}[1]{\sffamily\fontsize{7.4}{9}\bfseries\MakeUppercase{#1}\strut}
+\newcommand{\ocadfwtext}[1]{\sffamily\fontsize{8.2}{10.6}\selectfont #1\strut}
+\newenvironment{ocadframework}{\par\vspace{2mm}\begingroup\setlength{\tabcolsep}{2.5mm}%
+  \setlength{\parskip}{0pt}\renewcommand{\arraystretch}{1.35}\arrayrulecolor{ocadCamel}\setlength{\arrayrulewidth}{0.5pt}%
+  \noindent\tabularx{\linewidth}{>{\raggedright\arraybackslash}p{34mm}X}}{\endtabularx\endgroup\par}
+%% flow diagram: \begin{ocadflow}{3} \flowbox{Title}{Body} ... \end{ocadflow}
+\newenvironment{ocadflow}[1]{\par\vspace{1mm}\begin{tcbraster}[raster columns=#1,raster equal height,
+  raster column skip=3mm,raster row skip=2.5mm,raster before skip=1mm,raster after skip=2mm]}{\end{tcbraster}}
+\newcommand{\flowbox}[2]{\begin{tcolorbox}[enhanced,colback=ocadPanel,colframe=ocadNavy,boxrule=0.6pt,sharp corners,
+  left=3mm,right=3mm,top=2.4mm,bottom=2.4mm,colupper=ocadOlive,nobeforeafter]
+  {\sffamily\fontsize{7.4}{9}\bfseries\color{ocadNavy}\ocadspaced{\MakeUppercase{#1}}\par}%
+  {\color{ocadCamel}\vspace{0.3mm}\hrule height 0.5pt\vspace{1.2mm}}%
+  {\sffamily\fontsize{7.4}{10}\selectfont\raggedright #2\par}\end{tcolorbox}}
+
+%% footnote block (data sources, assumptions) under a section
+\newenvironment{ocadfootnotes}{\par\vspace{5mm}{\color{ocadCamel}\hrule height 0.4pt}\vspace{2mm}%
+  \sffamily\fontsize{7.2}{9.2}\selectfont\color{ocadBrown}\raggedright}{\par}
+%% disclaimer
+\newenvironment{ocaddisclaimer}{\par\vspace{8mm}\needspace{8\baselineskip}%
+  {\color{ocadNavy}\hrule height 0.5pt}\vspace{3mm}\sffamily\fontsize{7.4}{9.6}\selectfont\color{ocadBrown}}{\par}
+%% source entry
+\newcommand{\ocadsource}[5]{\par\vspace{1mm}\noindent\begin{minipage}{\linewidth}%
+  \hspace{0pt}{\color{ocadCamel}\vrule width 1.4pt}\hspace{2.6mm}%
+  \begin{minipage}{\dimexpr\linewidth-4.4mm\relax}\sffamily\fontsize{8}{10.4}\selectfont\raggedright
+  \textbf{\color{ocadNavy}#1}, #2.\ {\color{ocadBrown}\fontsize{7.4}{9.4}\selectfont #3. \nolinkurl{#4}. Information obtained: #5}%
+  \end{minipage}\end{minipage}\par}
+\newcommand{\ocadsourcegroup}[1]{\par\vspace{3mm}{\ocadDisplaySemi\fontsize{10.6}{13}\selectfont\color{ocadNavy}#1\par}\vspace{1mm}\nopagebreak}
+
+%% ------------------------------------------------------------- COVER PAGE
+%% Usage: \ocadcoversetup{company=..., ticker=..., exchange=..., series=..., date=...,
+%%   analyst=..., price=..., pricenote=..., chart=file, chartcaption=..., logo=file(optional)}
+%%        \makeocadcover
+\makeatletter
+\pgfkeys{/ocad/cover/.cd,
+  company/.store in=\ocadc@company, ticker/.store in=\ocadc@ticker,
+  exchange/.store in=\ocadc@exchange, series/.store in=\ocadc@series,
+  date/.store in=\ocadc@date, analyst/.store in=\ocadc@analyst,
+  price/.store in=\ocadc@price, pricenote/.store in=\ocadc@pricenote,
+  chart/.store in=\ocadc@chart, chartcaption/.store in=\ocadc@chartcaption,
+  logo/.store in=\ocadc@logo}
+\def\ocadc@logo{}
+\newcommand{\ocadcoversetup}[1]{\pgfkeys{/ocad/cover/.cd,#1}}
+\newcommand{\makeocadcover}{%
+  \thispagestyle{empty}\begin{tikzpicture}[remember picture,overlay]
+    \draw[ocadNavy,line width=0.75pt] ($(current page.north west)+(10mm,-10mm)$) rectangle ($(current page.south east)+(-10mm,10mm)$);
+    \draw[ocadCamel,line width=0.5pt] ($(current page.north west)+(12.5mm,-12.5mm)$) rectangle ($(current page.south east)+(-12.5mm,12.5mm)$);
+    \node[anchor=north,text=ocadBrown,font=\sffamily\fontsize{9.5}{12}\selectfont] at ($(current page.north)+(0,-32mm)$) {\addfontfeature{LetterSpace=22}OCAD - ONE COMPANY A DAY};
+    \node[anchor=north,text=ocadOlive,font=\sffamily\fontsize{8.4}{10}\selectfont] at ($(current page.north)+(0,-40mm)$) {\ocadspaced{\MakeUppercase{Series: \ocadc@series}}};
+    \ifx\ocadc@logo\@empty\else
+      \node[anchor=north] at ($(current page.north)+(0,-52mm)$) {\includegraphics[height=24mm,keepaspectratio]{\ocadc@logo}};
+    \fi
+    \node[anchor=north,text=ocadNavy,font=\ocadDisplaySemi\fontsize{27}{32}\selectfont,align=center,text width=160mm] at ($(current page.north)+(0,-88mm)$) {\ocadc@company};
+    \node[anchor=north,text=ocadBrown,font=\sffamily\fontsize{11}{14}\selectfont] at ($(current page.north)+(0,-112mm)$) {\ocadc@ticker\ \ |\ \ \ocadc@exchange};
+    \draw[ocadCamel,line width=0.75pt] ($(current page.north)+(-17mm,-122mm)$) -- ($(current page.north)+(17mm,-122mm)$);
+    \node[anchor=north,text=ocadNavy,font=\ocadDisplaySemi\fontsize{15}{18}\selectfont] at ($(current page.north)+(0,-128mm)$) {\ocadc@price};
+    \node[anchor=north,text=ocadBrown,font=\sffamily\fontsize{8}{10}\selectfont] at ($(current page.north)+(0,-137mm)$) {\ocadc@pricenote};
+    \node[anchor=north,fill=ocadPanel,draw=ocadCamel,line width=0.5pt,inner sep=4mm,text width=142mm,align=center] at ($(current page.north)+(0,-148mm)$)
+      {\includegraphics[width=\linewidth]{\ocadc@chart}\par\vspace{1mm}{\sffamily\fontsize{7.2}{9}\selectfont\color{ocadBrown}\ocadc@chartcaption\par}};
+    \draw[ocadNavy,line width=0.5pt] ($(current page.south west)+(18mm,27mm)$) -- ($(current page.south east)+(-18mm,27mm)$);
+    \node[anchor=south west,align=left,text=ocadNavy,font=\sffamily\fontsize{8}{10}\selectfont] at ($(current page.south west)+(18mm,15mm)$) {{\fontsize{6.6}{8}\color{ocadBrown}\ocadspaced{REPORT DATE}}\\\ocadc@date};
+    \node[anchor=south west,align=left,text=ocadNavy,font=\sffamily\fontsize{8}{10}\selectfont] at ($(current page.south west)+(70mm,15mm)$) {{\fontsize{6.6}{8}\color{ocadBrown}\ocadspaced{ANALYST}}\\\ocadc@analyst};
+    \node[anchor=south west,align=left,text=ocadNavy,font=\sffamily\fontsize{8}{10}\selectfont] at ($(current page.south west)+(120mm,15mm)$) {{\fontsize{6.6}{8}\color{ocadBrown}\ocadspaced{SERIES}}\\\ocadc@series};
+    \node[anchor=south east,align=left,text=ocadNavy,font=\sffamily\fontsize{8}{10}\selectfont] at ($(current page.south east)+(-18mm,15mm)$) {{\fontsize{6.6}{8}\color{ocadBrown}\ocadspaced{EXCHANGE}}\\\ocadc@exchange};
+  \end{tikzpicture}\clearpage}
+\makeatother
+\endinput
