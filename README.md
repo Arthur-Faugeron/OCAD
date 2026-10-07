@@ -1,6 +1,6 @@
 # One Company A Day
 
-A private, dated compendium of institutional-grade equity research. Published via GitHub Pages.
+A public, dated compendium of institutional-grade equity research. Published via GitHub Pages.
 
 ## Adding a new report
 
