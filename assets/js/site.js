@@ -132,6 +132,8 @@
 
     const searchInput = document.getElementById("archive-search");
     const emptyState = document.getElementById("archive-empty");
+    const expandAllBtn = document.getElementById("expand-all");
+    const collapseAllBtn = document.getElementById("collapse-all");
 
     loadManifest()
       .then((data) => {
@@ -139,6 +141,16 @@
         if (searchInput) {
           searchInput.disabled = false;
           searchInput.addEventListener("input", () => applyFilter(container, emptyState, searchInput.value));
+        }
+        if (expandAllBtn) {
+          expandAllBtn.addEventListener("click", () => {
+            container.querySelectorAll("details").forEach(d => d.open = true);
+          });
+        }
+        if (collapseAllBtn) {
+          collapseAllBtn.addEventListener("click", () => {
+            container.querySelectorAll("details").forEach(d => d.open = false);
+          });
         }
       })
       .catch((err) => {
