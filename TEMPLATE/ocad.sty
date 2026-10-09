@@ -26,8 +26,8 @@
 \definecolor{ocadPanel}{HTML}{FBF9F3}   % lighter panel (cover chart, flow boxes)
 
 %% ------------------------------------------------------------- PAGE
-\RequirePackage[a4paper,top=30mm,bottom=22mm,left=20mm,right=20mm,
-  headheight=14pt,headsep=7mm,footskip=11mm]{geometry}
+\RequirePackage[a4paper,top=22mm,bottom=20mm,left=20mm,right=20mm,
+  headheight=11pt,headsep=5mm,footskip=10mm]{geometry}
 \RequirePackage{microtype}
 \RequirePackage{graphicx}
 \RequirePackage{setspace}
@@ -113,13 +113,12 @@
 
 %% ------------------------------------------------------------- HEADINGS
 %% Sections are unnumbered (titles carry their own letters, e.g. "A. About the Business")
-%% and always start a new page (titleclass top), as in the HTML template.
+%% and flow continuously (no forced page break), so pages are not left mostly empty.
 \setcounter{secnumdepth}{0}
-\titleclass{\section}{top}
 \titleformat{\section}[block]
   {\ocadDisplaySemi\fontsize{16.5}{20}\selectfont\color{ocadNavy}}{}{0pt}{}
   [{\vspace{2.2mm}\color{ocadNavy}\titlerule[1pt]}]
-\titlespacing*{\section}{0pt}{0pt}{5mm}
+\titlespacing*{\section}{0pt}{8mm plus 1mm minus 1mm}{4.5mm}
 \titleformat{\subsection}[block]
   {\ocadDisplaySemi\fontsize{12.3}{15}\selectfont\color{ocadNavy}}{}{0pt}
   {\textcolor{ocadCamel}{\vrule width 2.4pt height 1.05em depth 0.35em}\hspace{3mm}}
@@ -127,19 +126,19 @@
 \titleformat{\subsubsection}[block]
   {\ocadDisplaySemi\fontsize{10.6}{13}\selectfont\color{ocadOlive}}{}{0pt}{}
 \titlespacing*{\subsubsection}{0pt}{5mm plus 1mm}{2mm}
-\pretocmd{\subsection}{\needspace{9\baselineskip}}{}{}
+\pretocmd{\section}{\needspace{12\baselineskip}}{}{}
+\pretocmd{\subsection}{\needspace{8\baselineskip}}{}{}
 \pretocmd{\subsubsection}{\needspace{6\baselineskip}}{}{}
 
 %% lead paragraph and small-caps label
 \newcommand{\ocadlede}[1]{{\fontsize{10.2}{15}\selectfont #1}\par}
 \newcommand{\ocadlabel}[1]{{\sffamily\fontsize{7.6}{9}\selectfont\color{ocadBrown}\ocadspaced{\MakeUppercase{#1}}}}
 
-%% provenance tag: Sourced / Reasoned / Calculated
-\newcommand{\ocadtag}[1]{{\setlength{\fboxsep}{1.2pt}\setlength{\fboxrule}{0.4pt}%
-  \fcolorbox{ocadCamel}{ocadIvory}{\sffamily\fontsize{6.4}{7}\selectfont\color{ocadOlive}\ocadspaced{\MakeUppercase{#1}}}}}
-\newcommand{\Sourced}{\ocadtag{Sourced}}
-\newcommand{\Reasoned}{\ocadtag{Reasoned}}
-\newcommand{\Calculated}{\ocadtag{Calculated}}
+%% provenance tags are not printed (kept as no-ops so older sources still compile)
+\newcommand{\ocadtag}[1]{}
+\newcommand{\Sourced}{}
+\newcommand{\Reasoned}{}
+\newcommand{\Calculated}{}
 
 %% lists
 \RequirePackage{enumitem}

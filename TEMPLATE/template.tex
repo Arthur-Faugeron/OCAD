@@ -1,0 +1,231 @@
+%% =========================================================================
+%% OCAD report template (single template for every report).
+%% Copy this folder, rename template.tex, replace every [BRACKETED] item.
+%% Build: latexmk -xelatex template.tex   (see README.md)
+%% =========================================================================
+\documentclass[10pt,a4paper]{article}
+\usepackage{ocad}
+\graphicspath{{charts/}}
+\hypersetup{pdftitle={OCAD - [Company]},pdfauthor={Arthur Faugeron}}
+\ocadSetReportID{OCAD report: [Company] ([TICKER]), [Day Month Year]}
+
+\newcommand{\ph}{[Replace with analytical text. State the claim, the number, the period, and the economic reason.]}
+
+\begin{document}
+
+%% ------------------------------------------------------------- COVER
+%% Omit logo={...} when no official logo file is available.
+\ocadcoversetup{company={[Company Name]}, ticker={[TICKER]}, exchange={[Exchange]},
+  series={[Series]}, date={[Day Month Year]}, analyst={Arthur Faugeron},
+  price={[Currency] [Price] per share}, pricenote={Closing price, [Weekday Day Month Year], latest completed trading day},
+  chart={cover_price.png}, chartcaption={[Ticker] daily closing price, [start] to [end], [currency] per share. Source: [provider].}}
+\makeocadcover
+
+%% ------------------------------------------------------------- EXECUTIVE SUMMARY
+\section{Executive Summary}
+\ocadlede{\ph}
+\subsection{Business}
+\ph
+\subsection{Financial Condition}
+\ph
+\subsection{Market Position}
+\ph
+\subsection{Valuation}
+\ph
+\subsection{Investment Framework}
+\begin{ocadframework}
+\fwrow{What is attractive}{[Text]}
+\fwrow{What is concerning}{[Text]}
+\fwrow{What must go right}{[Text]}
+\fwrow{What could break the thesis}{[Text]}
+\fwrow{Priced in}{[Text]}
+\end{ocadframework}
+\needspace{16\baselineskip}
+\subsection{Investment Profile}
+\begin{ocadtable}{Assessment by dimension}{>{\raggedright\arraybackslash}p{40mm} L}
+\ocadtablehead{\ocadH{Dimension}&\ocadH{Assessment}}
+Business quality & [Assessment and reason]\ocadhr
+Financial quality & [Assessment and reason]\ocadhr
+Competitive position & [Assessment and reason]\ocadhr
+Growth profile & [Assessment and reason]\ocadhr
+Balance-sheet risk & [Assessment and reason]\ocadhr
+Valuation & [Assessment and reason]\ocadhr
+Market and technical profile & [Assessment and reason]\ocadhr
+\end{ocadtable}
+\ocadtablenote{Source: analyst assessment.}
+
+%% ------------------------------------------------------------- A
+\section{A. About the Business}
+\subsection{A1. Business Environment}
+\ph
+\ocadchart{bar_line_example.png}{[Chart title]}{Source: [source], [period]. Units: [units].}
+\begin{ocadcallout}{Industry stage}\ph\end{ocadcallout}
+
+\subsection{A2. What Does the Company Do?}
+\ph
+\subsubsection{How one dollar of revenue is used}
+\ph
+\begin{ocadflow}{3}
+\flowbox{1. Customer}{[Customer types]}
+\flowbox{2. Product and service}{[Products and services]}
+\flowbox{3. Revenue}{[Revenue by segment]}
+\end{ocadflow}
+\begin{ocadflow}{4}
+\flowbox{4. Costs}{[Cost per unit of revenue]}
+\flowbox{5. Operating profit}{[Margin]}
+\flowbox{6. Cash flow}{[Operating cash flow and free cash flow]}
+\flowbox{7. Capital allocation}{[Dividends, buybacks, debt, capex]}
+\end{ocadflow}
+
+\subsection{A3. Business and Relationship Network}
+\begin{ocadtable}{Ecosystem map}{>{\raggedright\arraybackslash}p{30mm} L L}
+\ocadtablehead{\ocadH{Node}&\ocadH{Relationship}&\ocadH{Why it matters economically}}
+[Supplier] & [Relationship] & [Economic reason]\ocadhr
+[Customer] & [Relationship] & [Economic reason]\ocadhr
+[Partner or subsidiary] & [Relationship] & [Economic reason]\ocadhr
+\end{ocadtable}
+\ocadtablenote{Source: [source].}
+
+\subsection{A4. Competition}
+\begin{ocadtable}{Competitive comparison, [currency]}{>{\raggedright\arraybackslash}p{28mm} R R R R}
+\ocadtablehead{\ocadH{Company}&\ocadH{Revenue}&\ocadH{Op. margin}&\ocadH{EV/EBITDA}&\ocadH{Net debt}}
+[Company] & [x]bn & [x]\% & [x]x & [x]bn\ocadhr
+[Peer 1] & [x]bn & [x]\% & [x]x & [x]bn\ocadhr
+[Peer 2] & [x]bn & [x]\% & [x]x & [x]bn\ocadhr
+\end{ocadtable}
+\ocadtablenote{Source: [provider], [date]. Explain below why each peer was selected.}
+\subsection{A5. Competitive Differences}
+\ph
+\begin{ocadcallout}{Moat assessment: [None, Weak, Moderate, Strong or Very Strong]}\ph\end{ocadcallout}
+\subsection{A6. Industry Trend}
+\ph
+\subsection{A7. Management}
+\begin{ocadtable}{Executive team}{>{\raggedright\arraybackslash}p{34mm} >{\raggedright\arraybackslash}p{40mm} L}
+\ocadtablehead{\ocadH{Name}&\ocadH{Position}&\ocadH{Background}}
+[Name] & [Position] & [Background]\ocadhr
+\end{ocadtable}
+\ph
+
+%% ------------------------------------------------------------- B
+\section{B. Evaluation}
+\subsection{B1. Financial and Operating Metrics}
+\begin{ocadtable}{Profitability and returns}{>{\raggedright\arraybackslash}p{40mm} R R R R R}
+\ocadtablehead{\ocadH{Metric}&\ocadH{FY1}&\ocadH{FY2}&\ocadH{FY3}&\ocadH{FY4}&\ocadH{FY5}}
+Gross margin & [x]\% & [x]\% & [x]\% & [x]\% & [x]\%\ocadhr
+Operating margin & [x]\% & [x]\% & [x]\% & [x]\% & [x]\%\ocadhr
+\end{ocadtable}
+\ocadtablenote{Source: [source]. Reported or calculated: [state which].}
+\ocadchart{grouped_bars_example.png}{[Chart title]}{Source: [source]. Units: [units]. Period: [period].}
+\subsection{B2. Risks}
+\begin{ocadtable}{Risk register ranked by probability times impact}{>{\raggedright\arraybackslash}p{9mm} >{\raggedright\arraybackslash}p{34mm} >{\raggedright\arraybackslash}p{17mm} >{\raggedright\arraybackslash}p{16mm} L}
+\ocadtablehead{\ocadH{Rank}&\ocadH{Risk}&\ocadH{Probability}&\ocadH{Impact}&\ocadH{Description}}
+1 & [Risk] & [Level] & [Level] & [Description]\ocadhr
+2 & [Risk] & [Level] & [Level] & [Description]\ocadhr
+\end{ocadtable}
+\subsection{B3. Valuation}
+\ph
+\subsection{B4. Capital Market and Stock Analysis}
+\ph
+\begin{ocadtable}{Volatility and risk}{>{\raggedright\arraybackslash}p{58mm} R L}
+\ocadtablehead{\ocadH{Measure}&\ocadH{Value}&\ocadH{Basis}}
+Annualized volatility & [x]\% & Calculated\ocadhr
+Beta versus benchmark & [x] & Calculated\ocadhr
+Maximum drawdown & [x]\% & Calculated\ocadhr
+\end{ocadtable}
+
+%% ------------------------------------------------------------- C
+\section{C. Financial Statements}
+\subsection{C1. Income Statement}
+\ph
+\subsection{C2. Balance Sheet}
+\ph
+\subsection{C3. Cash Flow Statement}
+\ph
+\subsection{C4. Forecasting and Projections}
+\ph
+\subsection{C5. Discounted Cash Flow (DCF) Model}
+\begin{ocadtable}{Sensitivity: WACC (rows) against terminal growth (columns), value per share}{L R R R R R}
+\ocadtablehead{\ocadH{WACC}&\ocadH{[g1]\%}&\ocadH{[g2]\%}&\ocadH{[g3]\%}&\ocadH{[g4]\%}&\ocadH{[g5]\%}}
+[w1]\% & [v] & [v] & [v] & [v] & [v]\ocadhr
+[w2]\% & [v] & [v] & [v] & [v] & [v]\ocadhr
+\end{ocadtable}
+\begin{ocadfootnotes}State every DCF assumption: revenue, growth, margin, tax, capex, working capital, WACC, terminal growth, terminal value, net debt, shares. Show a range, not a point estimate.\end{ocadfootnotes}
+\subsection{C6. Leveraged Buyout (LBO) Model}
+\ph\ [Write Not applicable and the reason when an LBO is not meaningful.]
+
+%% ------------------------------------------------------------- D, E
+\section{D. Investment Thesis}
+\subsection{Bull Case}\ph
+\subsection{Bear Case}\ph
+\subsection{Base Case}\ph
+\subsection{Catalysts}
+\begin{ocadtable}{Potential catalysts}{>{\raggedright\arraybackslash}p{36mm} >{\raggedright\arraybackslash}p{26mm} L}
+\ocadtablehead{\ocadH{Event}&\ocadH{Timing}&\ocadH{Why it matters}}
+[Event] & [Date] & [Reason]\ocadhr
+\end{ocadtable}
+\subsection{Things to Monitor}
+\begin{ocadtable}{Monitoring list}{>{\raggedright\arraybackslash}p{34mm} L L L}
+\ocadtablehead{\ocadH{Metric or event}&\ocadH{Why it matters}&\ocadH{Positive}&\ocadH{Negative}}
+[Metric] & [Reason] & [Threshold] & [Threshold]\ocadhr
+\end{ocadtable}
+
+\section{E. Final Investment Framework}
+\begin{ocadframework}
+\fwrow{Business quality}{[Assessment and explanation]}
+\fwrow{Financial quality}{[Assessment and explanation]}
+\fwrow{Competitive position}{[Assessment and explanation]}
+\fwrow{Management}{[Assessment and explanation]}
+\fwrow{Industry}{[Assessment and explanation]}
+\fwrow{Valuation}{[Assessment and explanation]}
+\fwrow{Technical and market structure}{[Assessment and explanation]}
+\fwrow{Principal risk}{[Risk]}
+\fwrow{Principal catalyst}{[Catalyst]}
+\fwrow{Key variable}{[The single variable that matters most]}
+\fwrow{Thesis invalidation}{The investment thesis would become materially weaker if [objective, measurable conditions].}
+\end{ocadframework}
+
+%% ------------------------------------------------------------- F: long table, header repeats across pages
+\section{F. Data Table}
+\ocadlongtablesetup
+\begin{longtable}{@{}p{18mm}p{40mm}p{28mm}p{28mm}p{28mm}@{}}
+\rowcolor{ocadNavy}\ocadH{Category}&\ocadH{Metric}&\ocadH{Current}&\ocadH{Prior year}&\ocadH{3Y / 5Y trend}\ocadhr
+\endfirsthead
+\rowcolor{ocadNavy}\ocadH{Category}&\ocadH{Metric}&\ocadH{Current}&\ocadH{Prior year}&\ocadH{3Y / 5Y trend}\ocadhr
+\endhead
+Market & Market capitalization & [x] & [x] & [x]\ocadhr
+Market & Enterprise value & [x] & [x] & [x]\ocadhr
+Market & Share price & [x] & [x] & [x]\ocadhr
+Growth & Revenue growth & [x] & [x] & [x]\ocadhr
+Profitability & Gross margin & [x] & [x] & [x]\ocadhr
+Profitability & Operating margin & [x] & [x] & [x]\ocadhr
+Profitability & Net margin & [x] & [x] & [x]\ocadhr
+Profitability & ROE & [x] & [x] & [x]\ocadhr
+Profitability & ROIC & [x] & [x] & [x]\ocadhr
+Cash flow & Operating cash flow & [x] & [x] & [x]\ocadhr
+Cash flow & Free cash flow & [x] & [x] & [x]\ocadhr
+Leverage & Net debt / EBITDA & [x] & [x] & [x]\ocadhr
+Valuation & P/E & [x] & [x] & [x]\ocadhr
+Valuation & EV/EBITDA & [x] & [x] & [x]\ocadhr
+Valuation & P/FCF & [x] & [x] & [x]\ocadhr
+Market & Beta & [x] & [x] & [x]\ocadhr
+Market & Volatility & [x] & [x] & [x]\ocadhr
+Market & Maximum drawdown & [x] & [x] & [x]\ocadhr
+\end{longtable}
+
+%% ------------------------------------------------------------- G
+\section{G. Sources and Methodology}
+\subsection{Data cross-check}
+\ph
+\subsection{Source list}
+\ocadsourcegroup{Primary Sources}
+\ocadsource{[Organization]}{[Document title]}{[Publication date]}{[https://verified-open-url]}{[Information obtained]}
+\ocadsourcegroup{Secondary Sources}
+\ocadsource{[Organization]}{[Document title]}{[Publication date]}{[https://verified-open-url]}{[Information obtained]}
+\ocadsourcegroup{Market Data}
+\ocadsource{[Organization]}{[Dataset]}{[Data to date]}{[https://verified-open-url]}{[Information obtained]}
+\ocadsourcegroup{Calculations}
+\ph
+\begin{ocaddisclaimer}
+This report has been prepared for personal research purposes only and does not constitute investment advice, financial advice, or a recommendation to buy, sell, or hold any security. The information contained herein has been compiled with the assistance of artificial intelligence and is based on publicly available sources believed to be reliable, but its accuracy and completeness are not guaranteed. Past performance is not indicative of future results. Investors should conduct their own due diligence and consult with a qualified financial professional before making any investment decisions.
+\end{ocaddisclaimer}
+\end{document}
